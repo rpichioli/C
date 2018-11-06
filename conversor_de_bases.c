@@ -2,40 +2,39 @@
 *	@Projeto			: Conversor de bases
 *	----------------------------------------
 *	@Autor				: Caio Barbosa
-*	@Data de criaÁ„o	: 06/11/2018
-*	@Proposta			: Converter valores de uma determinada base numÈrica para outra
+*	@Data de cria√ß√£o		: 06/11/2018
+*	@Proposta			: Converter valores de uma determinada base num√©rica para outra
 * 	-----------------------------------------------------------------------------------
-*	ExemplificaÁ„o:
+*	Exemplifica√ß√£o:
 *
-*	VALOR  	| 	BASE
-*		   	|_________
-*	RESTO	   QUOEFICIENTE
+*	VALOR  	|    BASE
+*		|_________
+*	RESTO	    QUOEFICIENTE
 */
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-// Estrutura para ter elemento com tamanho din‚mico
+// Estrutura para ter elemento com tamanho din√¢mico
 struct Resultado{
 	int valorR;
 	
 	struct Resultado *proximo; 
 };
 
-// DefinÁ„o dos ponteiros
+// Defin√ß√£o dos ponteiros
 typedef struct Resultado *ponteiro;
 typedef ponteiro resultado; 
 
-// InstanciaÁ„o do elemento
+// Instancia√ß√£o do elemento
 resultado r;
 
-// DefiniÁ„o dos mÈtodos
+// Defini√ß√£o dos m√©todos
 ponteiro* Criar(resultado r);
 ponteiro* Empilhar(int mValorR,resultado r);
 void Imprimir(int valorOriginal, int base, resultado r);
 	
-// MÈtodo principal **************************************************************************************************
+// M√©todo principal **************************************************************************************************
 int main(int argc, char *argv[]) {
 	// Variaveis
 	int valor, valorOriginal, base, resto, quoeficiente;
@@ -49,7 +48,7 @@ int main(int argc, char *argv[]) {
 		r = Criar(r);
 		
 		printf(" *Por enquanto somente da base 10 para outras \n");
-		// CabeÁalho
+		// Cabe√ßalho
 		printf("**************************************************************************\n");
 		printf("**                      CONVERSOR DE BASES                              **\n");
 		printf("**************************************************************************\n\n");	
@@ -65,13 +64,13 @@ int main(int argc, char *argv[]) {
 			// Valor Original permanecera inalterado
 			valor = valorOriginal;
 			
-			// C·lculo
+			// C√°lculo
 			do{		
-				resto 			= valor % base;
+				resto		= valor % base;
 				quoeficiente	= valor / base;
 				
 				r 		= Empilhar(resto, r);
-				valor 	=  quoeficiente;			
+				valor 		=  quoeficiente;			
 			}while(quoeficiente != 0);
 			
 			
@@ -97,7 +96,7 @@ ponteiro* Criar(resultado r){
 ponteiro* Empilhar(int mValorR, resultado r){
 	resultado pont;
 	
-	// Verifica se tem espaÁo em memÛria
+	// Verifica se tem espa√ßo em mem√≥ria
 	if((pont = malloc(sizeof(ponteiro)))==NULL){
 		printf(" :::: Memoria insuficiente \n\n");
 	}else{
